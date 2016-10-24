@@ -24,7 +24,7 @@ public class IMRosterConverter extends DocumentConverter<RosterDocument, IMCSVEn
             return document;
         }
 
-        String staffId = GeneralConfig.getUserId();
+        String staffId = GeneralConfig.getInstance().getString(GeneralConfig.Kind.userId);
         if (DataUtil.isNullOrEmpty(staffId) || !DataUtil.isNumeric(staffId)) {
             staffId = "XXXXX";
         } else {
@@ -51,7 +51,7 @@ public class IMRosterConverter extends DocumentConverter<RosterDocument, IMCSVEn
             return document;
         }
 
-        String name = GeneralConfig.getInstance().get("imName");
+        String name = GeneralConfig.getInstance().getString("imName");
         if (DataUtil.isNullOrEmpty(name)) {
             return document;
         }

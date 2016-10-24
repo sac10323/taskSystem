@@ -40,7 +40,6 @@ public class PropertyManager {
 
     public boolean getBoolean(String key, boolean defBool, String trueString) {
         try {
-            log.warn("読み込み -> key[" + key + "] value[" + resource.get(key) + "]");
             return trueString.equals(resource.get(key));
         } catch (Exception ex) {
             log.warn(ex);
@@ -60,7 +59,6 @@ public class PropertyManager {
     public String getString(String key) {
         try {
             Object value = resource.get(key);
-            log.info("読み込み -> key[" + key + "], value[" + value + "]");
             if (value == null) {
                 return null;
             }

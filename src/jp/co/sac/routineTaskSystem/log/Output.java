@@ -51,7 +51,7 @@ public class Output {
     public Thread print(Map<Document, List<Findings>> map) {
         Thread ret = null;
         String result = createShowCheckResult(map);
-        if (GeneralConfig.isOutputMsgBoxMode()) {
+        if (GeneralConfig.getInstance().getBoolean(GeneralConfig.Kind.outputMsgBox)) {
             ret = showMessage(result);
         }
         println(result);
@@ -60,7 +60,7 @@ public class Output {
 
     private String createShowCheckResult(Map<Document, List<Findings>> map) {
         StringBuilder sb = new StringBuilder();
-        int maxPrintCount = GeneralConfig.getNumberOfShowFinds();
+        int maxPrintCount = GeneralConfig.getInstance().getInt(GeneralConfig.Kind.numberOfShowFinds);
         sb.append("[チェック結果]").append(getLineSeparator());
         if (map.isEmpty()) {
             sb.append(" - no file... - ").append(getLineSeparator());

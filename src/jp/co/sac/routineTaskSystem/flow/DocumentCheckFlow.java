@@ -56,7 +56,7 @@ public class DocumentCheckFlow {
                 }
             } else {
                 // 指定フォルダからファイルを読み込み
-                String readDirPath = config.get("checkFolder");
+                String readDirPath = config.getString("checkFolder");
                 if (!DataUtil.isNullOrEmpty(readDirPath)) {
                     readDirPath = Const.getRootPath() + File.separator + readDirPath;
                     List<String> targets = getCheckTargetFilePaths(readDirPath, true);
@@ -74,19 +74,20 @@ public class DocumentCheckFlow {
             Output.getInstance().printForDebug(docs);
             //設定ファイルから社員コードを読み込み
             Staff inspector = null;
-            if (!DataUtil.isNullOrEmpty(GeneralConfig.getUserId()) && DataUtil.isNumeric(GeneralConfig.getUserId())) {
+            String userId = config.getString(GeneralConfig.Kind.userId);
+            if (!DataUtil.isNullOrEmpty(userId) && DataUtil.isNumeric(userId)) {
                 //社員コードがある場合は、点検者として設定する
                 inspector = new Staff();
-                inspector.setStaffId(Integer.parseInt(GeneralConfig.getUserId()));
+                inspector.setStaffId(Integer.parseInt(userId));
             }
             //読み込んだ書類をチェック
             Map docsMap = docCtrl.validateDocuments(docs, inspector);
             //チェック結果を表示
             messageWindow = Output.getInstance().print(docsMap);
 
-            if (config.get("writeXl", "F").equals("T")) {
+            if (config.getBoolean("writeXl")) {
                 // フォルダ準備
-                String dirPath = getCreateDirPath(config.get("outputFolderXl", "out"));
+                String dirPath = getCreateDirPath(config.getString("outputFolderXl", "out"));
                 FileUtil.prepareDirectory(dirPath);
                 // Excel出力
                 for (Document doc : docs) {
@@ -101,9 +102,9 @@ public class DocumentCheckFlow {
                 }
             }
 
-            if (GeneralConfig.isOutputCsvMode()) {
+            if (config.getBoolean(GeneralConfig.Kind.outputCsv)) {
                 // フォルダ準備
-                String dirPath = getCreateDirPath(config.get("outputFolderCsv", "out"));
+                String dirPath = getCreateDirPath(config.getString("outputFolderCsv", "out"));
                 FileUtil.prepareDirectory(dirPath);
                 // CSV出力
                 for (Document doc : docs) {

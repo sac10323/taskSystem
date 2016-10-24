@@ -248,7 +248,7 @@ public final class DataUtil {
         }
         String ret;
         if (isNullOrEmpty(document.getDirPath())) {
-            ret = GeneralConfig.getOutputPath();
+            ret = GeneralConfig.getInstance().getString(GeneralConfig.Kind.outputPath);
         } else {
             ret = document.getDirPath();
         }
@@ -260,7 +260,7 @@ public final class DataUtil {
 
     public static String getCSVSaveDirPath() {
         String ret;
-        ret = GeneralConfig.getOutputPath();
+        ret = GeneralConfig.getInstance().getString(GeneralConfig.Kind.outputPath);
         if (!isNullOrEmpty(ret) && ret.lastIndexOf(File.separator) == ret.length()) {
             return ret + RosterConst.CSV_FOLDER;
         }
@@ -272,7 +272,7 @@ public final class DataUtil {
             return null;
         }
         String ret;
-        ret = GeneralConfig.getOutputPath();
+        ret = GeneralConfig.getInstance().getString(GeneralConfig.Kind.outputPath);
         if (!isNullOrEmpty(ret) && ret.lastIndexOf(File.separator) == ret.length()) {
             return ret + RosterConst.CSV_FOLDER + File.separator + fileName;
         }
@@ -292,7 +292,7 @@ public final class DataUtil {
 
     public static String getRosterSaveDirPath() {
         String ret;
-        ret = GeneralConfig.getOutputPath();
+        ret = GeneralConfig.getInstance().getString(GeneralConfig.Kind.outputPath);
         if (!isNullOrEmpty(ret) && ret.lastIndexOf(File.separator) == ret.length()) {
             return ret + RosterConst.SAVE_FOLDER;
         }

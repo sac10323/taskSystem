@@ -10,25 +10,31 @@ import jp.co.sac.routineTaskSystem.constant.Const;
  */
 public class GeneralConfig {
 
-    private static boolean ready = false;
     private static final String CONFIG_PATH = Const.getRootPath() + File.separator + "settings.properties";
-    private static String trueString = "T";
-    private static String numberOfShowFindsKey = "numberOfShowFinds";
-    private static int numberOfShowFinds = 0;
-    private static boolean OutputMsgBox = false;
-    private static String OutputMsgBoxKey = "OutputMsgBox";
-    private static boolean outputCsv = false;
-    private static String outputCsvKey = "outputCsv";
-    private static String userId = "";
-    private static String userIdKey = "sUserId";
-    private static String outputPath = Const.getRootPath();
-    private static String outputPathKey = "outputPathKey";
-    private static boolean multiThread = false;
-    private static String multiThreadKey = "multiThread";
-    private static String rosterCSVFileNamePattern = "@YM_勤務表_@staffId_@name";
-    private static String rosterCSVFileNamePatternKey = "rosterCSVFileNamePattern";
     private static PropertyManager manager = new PropertyManager(CONFIG_PATH);
     private static GeneralConfig instance = new GeneralConfig();
+
+    public enum Kind {
+        numberOfShowFinds("numberOfShowFinds", "0"),
+        outputMsgBox("OutputMsgBox", "false"),
+        outputCsv("outputCsv", "false"),
+        userId("sUserId", ""),
+        outputPath("outputPathKey", Const.getRootPath()),
+        rosterCsvFileNamePattern("rosterCSVFileNamePattern", "@YM_勤務表_@staffId_@name"),
+        ;
+        private String key;
+        private String def;
+        Kind(String key, String def) {
+            this.key = key;
+            this.def = def;
+        }
+        protected String getKey() {
+            return key;
+        }
+        protected String getDef() {
+            return def;
+        }
+    }
 
     public static GeneralConfig getInstance() {
         return instance;
@@ -37,62 +43,39 @@ public class GeneralConfig {
     private GeneralConfig() {
     }
 
-    /**
-     * 初期読み込み
-     */
-    private static void prepare() {
-        if (!ready) {
-            OutputMsgBox = manager.getBoolean(OutputMsgBoxKey, OutputMsgBox, trueString);
-            userId = manager.getString(userIdKey, userId);
-            outputPath = manager.getString(outputPathKey, outputPath);
-            outputCsv = manager.getBoolean(outputCsvKey, outputCsv, trueString);
-            numberOfShowFinds = manager.getInt(numberOfShowFindsKey, numberOfShowFinds);
-            multiThread = manager.getBoolean(multiThreadKey, multiThread, trueString);
-            rosterCSVFileNamePattern = manager.getString(rosterCSVFileNamePatternKey, rosterCSVFileNamePattern);
-            ready = true;
-        }
+    public String getString(Kind kind) {
+        return getString(kind.getKey(), kind.getDef());
     }
 
-    public String get(String key, String def) {
+    public String getString(String key) {
+        return getString(key, null);
+    }
+
+    public String getString(String key, String def) {
         return manager.getString(key, def);
     }
 
-    public String get(String key) {
-        return manager.getString(key);
+    public Integer getInt(Kind kind) {
+        return getInt(kind.getKey(), Integer.valueOf(kind.getDef()));
     }
 
-    public static boolean isOutputMsgBoxMode() {
-        prepare();
-        return OutputMsgBox;
+    public Integer getInt(String key) {
+        return getInt(key, null);
     }
 
-    public static boolean isOutputCsvMode() {
-        prepare();
-        return outputCsv;
+    public Integer getInt(String key, Integer def) {
+        return manager.getInt(key, def);
     }
 
-    public static String getUserId() {
-        prepare();
-        return userId;
+    public boolean getBoolean(Kind kind) {
+        return getBoolean(kind.getKey(), Boolean.valueOf(kind.getDef()));
     }
 
-    public static String getOutputPath() {
-        prepare();
-        return outputPath;
+    public boolean getBoolean(String key) {
+        return getBoolean(key, false);
     }
 
-    public static int getNumberOfShowFinds() {
-        prepare();
-        return numberOfShowFinds;
-    }
-
-    public static boolean multiThread() {
-        prepare();
-        return multiThread;
-    }
-
-    public static String rosterCSVFileNamePattern() {
-        prepare();
-        return rosterCSVFileNamePattern;
+    public boolean getBoolean(String key, boolean def) {
+        return manager.getBoolean(key, def, "T");
     }
 }

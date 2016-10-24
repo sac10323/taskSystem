@@ -126,7 +126,7 @@ public class TranspValidator extends DocumentValidator<TranspDocument> {
         if (DataUtil.isNullOrEmpty(affiliation)) {
             finds.add(new TranspFindings(TranspConst.FindMessage.NO_AFFILIATION));
         } else {
-            String correctAffiliation = GeneralConfig.getInstance().get("sAffiliation");
+            String correctAffiliation = GeneralConfig.getInstance().getString("sAffiliation");
             if (DataUtil.isNullOrEmpty(correctAffiliation)) {
                 if (!correctAffiliation.equals(affiliation)) {
                     finds.add(new TranspFindings(TranspConst.FindMessage.ERR_AFFILIATION));

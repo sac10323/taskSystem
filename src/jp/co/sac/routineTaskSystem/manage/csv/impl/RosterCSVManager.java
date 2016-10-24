@@ -86,7 +86,7 @@ public class RosterCSVManager extends CSVManager<RosterCSVEntity, RosterDocument
 
     @Override
     public String createFileName(RosterCSVEntity entity) {
-        String work = GeneralConfig.rosterCSVFileNamePattern();
+        String work = GeneralConfig.getInstance().getString(GeneralConfig.Kind.rosterCsvFileNamePattern);
         work = work.replace("@YM", entity.getYearAndMonth());
         work = work.replace("@staffId", entity.getStaffId());
         if (!DataUtil.isNullOrEmpty(entity.getName())) {

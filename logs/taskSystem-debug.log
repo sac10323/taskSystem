@@ -1,0 +1,177 @@
+[2016/10/24 15:20:43.770], INFO , main, root, Mon Oct 24 15:20:43 JST 2016
+[2016/10/24 15:20:43.784], INFO , main, root, C:\Users\shogo_saito\Documents\NetBeansProjects\taskSystem\
+[2016/10/24 15:20:45.929], DEBUG, main, root, # title -> 201609sac10323
+# extension -> csv
+# year -> 2016
+# month -> 9
+# maxday -> 31
+# fileError -> null
+# data 
+# AuthorName -> null
+# AuthorSign -> null
+# SuperSign -> null
+# WorkLocation -> 東京
+# StaffId -> 10323
+# [ 0] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [ 1] -> FROM : 9:00 ; TO : 18:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [ 2] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [ 3] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [ 4] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [ 5] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [ 6] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [ 7] -> FROM : 9:00 ; TO : 18:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [ 8] -> FROM : 9:00 ; TO : 18:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [ 9] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [10] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [11] -> FROM : 9:00 ; TO : 18:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [12] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [13] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [14] -> FROM : 9:30 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [15] -> FROM : 9:00 ; TO : 18:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [16] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [17] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [18] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [19] -> FROM : 9:30 ; TO : 18:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [20] -> FROM : 9:30 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [21] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [22] -> FROM : 9:00 ; TO : 17:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [23] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [24] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [25] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [26] -> FROM : 9:30 ; TO : 19:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町(インフォマート) ; 
+# [27] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [28] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [29] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [30] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+
+[2016/10/24 15:20:45.941], DEBUG, main, root, # title -> 201610交通費請求明細書10323
+# extension -> xls
+# year -> 2016
+# month -> 10
+# maxday -> 40
+# fileError -> null
+# data 
+# Header -> 平成     年　　月     日
+# StaffId -> 10323
+# Affiliation -> null
+# Name -> null
+# Period -> 平成
+# [ 0] -> MonthAndDay : 10/2 ; Business : テスト業務 ; Destination : テスト行き先 ; Vehicle : 乗り物 ; Departure : 週発 ; Arriving : 到着 ; Amount : 356 ; 
+# [ 1] -> MonthAndDay : 10/3 ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [ 2] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [ 3] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [ 4] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [ 5] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [ 6] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [ 7] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [ 8] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [ 9] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [10] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [11] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [12] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [13] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [14] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [15] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [16] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [17] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [18] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [19] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [20] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [21] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [22] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [23] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [24] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [25] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [26] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [27] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [28] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [29] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [30] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [31] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [32] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [33] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [34] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [35] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [36] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [37] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [38] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+# [39] -> MonthAndDay : null ; Business : null ; Destination : null ; Vehicle : null ; Departure : null ; Arriving : null ; Amount : null ; 
+
+[2016/10/24 15:20:45.947], DEBUG, main, root, # title -> 201608sac10323
+# extension -> xls
+# year -> 2016
+# month -> 8
+# maxday -> 31
+# fileError -> null
+# data 
+# AuthorName -> 齋藤　翔吾
+# AuthorSign -> 齋藤　翔吾
+# SuperSign -> null
+# WorkLocation -> 東京
+# StaffId -> 10323
+# [ 0] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 大門（インフォマート） ; 
+# [ 1] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 大門（インフォマート） ; 
+# [ 2] -> FROM : 9:00 ; TO : 19:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 大門（インフォマート） ; 
+# [ 3] -> FROM : 9:30 ; TO : 19:30 ; StrangeA : null ; StrangeB : null ; Cause : 遅刻 ; Destination : 大門（インフォマート）・電車遅延のため ; 
+# [ 4] -> FROM : 9:00 ; TO : 19:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 大門（インフォマート） ; 
+# [ 5] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [ 6] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [ 7] -> FROM : 9:00 ; TO : 19:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 大門（インフォマート） ; 
+# [ 8] -> FROM : 9:00 ; TO : 19:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 大門（インフォマート） ; 
+# [ 9] -> FROM : 10:30 ; TO : 19:00 ; StrangeA : null ; StrangeB : null ; Cause : 遅刻 ; Destination : 大門（インフォマート）・私用のため ; 
+# [10] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [11] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : 特休 ; Destination : 夏期休暇 ; 
+# [12] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [13] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [14] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : 特休 ; Destination : 夏期休暇 ; 
+# [15] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : 有休 ; Destination : 現場休暇のため ; 
+# [16] -> FROM : 9:00 ; TO : 19:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 大門（インフォマート） ; 
+# [17] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 大門（インフォマート） ; 
+# [18] -> FROM : 9:00 ; TO : 18:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 大門（インフォマート） ; 
+# [19] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [20] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [21] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : 有休 ; Destination : 体調不良のため ; 
+# [22] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町（インフォマート） ; 
+# [23] -> FROM : 9:00 ; TO : 18:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町（インフォマート） ; 
+# [24] -> FROM : 9:00 ; TO : 19:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町（インフォマート） ; 
+# [25] -> FROM : 9:00 ; TO : 20:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町（インフォマート）・グループ会 ; 
+# [26] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [27] -> FROM : null ; TO : null ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : null ; 
+# [28] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町（インフォマート） ; 
+# [29] -> FROM : 9:00 ; TO : 18:30 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町（インフォマート） ; 
+# [30] -> FROM : 9:00 ; TO : 18:00 ; StrangeA : null ; StrangeB : null ; Cause : null ; Destination : 浜松町（インフォマート） ; 
+
+[2016/10/24 15:20:45.948], DEBUG, main, root, # title -> 201511通勤費請求書10323
+# extension -> xls
+# year -> 2015
+# month -> 11
+# maxday -> 4
+# fileError -> null
+# data 
+# Header -> 平成    27年    11 月   末日（ 1 ／ 1  ）
+# Affiliation -> 第2システム部3G
+# Name -> 齋藤 翔吾
+# Address -> 千葉県市川市八幡
+# WorkLocation -> 芝大門116ビル（大門）
+# CommutDayFrom -> null
+# [ 0] -> Year : 27 ; Month : 11 ; Price1 : 11630 ; Price2 : null ; Price3 : null ; Price4 : null ; Price5 : null ; Price6 : null ; SumPrice : SUM(E12:J12) ; 
+# [ 1] -> Year : null ; Month : null ; Price1 : null ; Price2 : null ; Price3 : null ; Price4 : null ; Price5 : null ; Price6 : null ; SumPrice : SUM(E13:J13) ; 
+# [ 2] -> Year : null ; Month : null ; Price1 : null ; Price2 : null ; Price3 : null ; Price4 : null ; Price5 : null ; Price6 : null ; SumPrice : SUM(E14:J14) ; 
+# [ 3] -> Year : null ; Month : null ; Price1 : null ; Price2 : null ; Price3 : null ; Price4 : null ; Price5 : null ; Price6 : null ; SumPrice : SUM(E15:J15) ; 
+
+[2016/10/24 15:20:45.949], DEBUG, main, root, # title -> test
+# extension -> null
+# year -> 0
+# month -> 0
+# maxday -> 31
+# fileError -> ファイルが存在しません。
+# data 
+#  -> # title -> test
+# extension -> null
+# year -> 0
+# month -> 0
+# maxday -> 31
+# fileError -> ファイルが存在しません。
+# data 
+#  -> 
+
