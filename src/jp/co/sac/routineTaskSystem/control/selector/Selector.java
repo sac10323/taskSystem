@@ -4,6 +4,7 @@ import jp.co.sac.routineTaskSystem.common.DataUtil;
 import jp.co.sac.routineTaskSystem.control.command.DocumentCommand;
 import jp.co.sac.routineTaskSystem.control.command.impl.CsvCommand;
 import jp.co.sac.routineTaskSystem.control.command.impl.XlsCommand;
+import jp.co.sac.routineTaskSystem.control.selector.impl.CommandSelector;
 import jp.co.sac.routineTaskSystem.convert.DocumentConverter;
 import jp.co.sac.routineTaskSystem.convert.extra.IMRosterConverter;
 import jp.co.sac.routineTaskSystem.convert.impl.RosterConverter;
@@ -54,21 +55,6 @@ public class Selector {
         transpValidator { @Override public DocumentValidator newInstance() { return new TranspValidator(); } },
         ;
         public abstract DocumentValidator newInstance();
-    }
-
-    protected enum CommandSelector {
-        csvCommand("csv", Document.FileType.csv) {@Override public DocumentCommand getCommand() {return new CsvCommand();}},
-        xlsCommand("xls", Document.FileType.xls) {@Override public DocumentCommand getCommand() {return new XlsCommand();}},
-        ;
-        private final transient String extension;
-        private final transient Document.FileType fileType;
-        CommandSelector(String extension, Document.FileType fileType) {
-            this.extension = extension;
-            this.fileType = fileType;
-        }
-        public String getExtension() {return extension;}
-        public Document.FileType getFileType() {return fileType;}
-        public abstract DocumentCommand getCommand();
     }
 
     public DocumentManager getDocumentManager(String title) {
@@ -136,24 +122,6 @@ public class Selector {
             DocumentValidator vdt = sel.newInstance();
             if (vdt.isTargetOf(doc)) {
                 return vdt;
-            }
-        }
-        return null;
-    }
-
-    public DocumentCommand<Document> getCommand(String extension) {
-        for (CommandSelector sel : CommandSelector.values()) {
-            if (DataUtil.equalsIgnoreTextSize(extension, sel.getExtension())) {
-                return sel.getCommand();
-            }
-        }
-        return null;
-    }
-
-    public DocumentCommand<Document> getCommand(Document.FileType saveType) {
-        for (CommandSelector sel : CommandSelector.values()) {
-            if (sel.getFileType().equals(saveType)) {
-                return sel.getCommand();
             }
         }
         return null;

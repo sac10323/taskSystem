@@ -14,6 +14,7 @@ import jp.co.sac.routineTaskSystem.control.DocumentControllerIF;
 import jp.co.sac.routineTaskSystem.control.ValidatorControllerIF;
 import jp.co.sac.routineTaskSystem.control.command.DocumentCommand;
 import jp.co.sac.routineTaskSystem.control.selector.Selector;
+import jp.co.sac.routineTaskSystem.control.selector.impl.CommandSelector;
 import jp.co.sac.routineTaskSystem.entity.document.Document;
 import jp.co.sac.routineTaskSystem.entity.document.DummyDocument;
 import jp.co.sac.routineTaskSystem.entity.findings.Findings;
@@ -69,7 +70,7 @@ public class DocumentControllerImpl implements DocumentControllerIF {
         try {
             String extension = DataUtil.getExtensionFromFilePath(fileName);
             String title = DataUtil.convertToTitleFromFilePath(fileName);
-            DocumentCommand<Document> command = selector.getCommand(extension);
+            DocumentCommand<Document> command = new CommandSelector().getCommand(extension);
             if (command != null) {
                 document = command.load(title, in);
             }
@@ -89,7 +90,7 @@ public class DocumentControllerImpl implements DocumentControllerIF {
         if (document == null) {
             return;
         }
-        DocumentCommand<Document> command = selector.getCommand(saveType);
+        DocumentCommand<Document> command = new CommandSelector().getCommand(saveType);
         if (command != null) {
             File file = new File(dirPath + File.separator + command.getFileName(document));
             try (FileOutputStream out = new FileOutputStream(file)) {
@@ -103,7 +104,7 @@ public class DocumentControllerImpl implements DocumentControllerIF {
         if (document == null) {
             return;
         }
-        DocumentCommand<Document> command = selector.getCommand(saveType);
+        DocumentCommand<Document> command = new CommandSelector().getCommand(saveType);
         if (command != null) {
             command.save(document, out);
         }
