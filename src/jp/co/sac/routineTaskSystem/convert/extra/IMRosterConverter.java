@@ -56,6 +56,8 @@ public class IMRosterConverter extends DocumentConverter<RosterDocument, IMCSVEn
             return document;
         }
 
+        boolean hasWorkHoliday = GeneralConfig.getInstance().getBoolean("hasWorkHoliday", true);
+
         for (IMCSVEntity record : entity.records()) {
 
             if (!name.equals(record.getName())) {
@@ -95,6 +97,15 @@ public class IMRosterConverter extends DocumentConverter<RosterDocument, IMCSVEn
                     minute = 30;
                 }
                 document.put(RosterConst.Category.TO, index, hour + ":" + ("0" + minute).substring(minute < 10 ? 0 : 1));
+            }
+
+            // 事由
+            if (from != null && to != null) {
+                if (from[3] > 9 || (from[3] == 9 && from[4] > 0)) {
+                    document.put(RosterConst.Category.Cause, index, hasWorkHoliday ? RosterConst.Cause.HALF_HOLIDAY : RosterConst.Cause.DELAY);
+                } else if (to[3] < 18 || (to[3] == 18 && to[4] > 0)) {
+                    document.put(RosterConst.Category.Cause, index, hasWorkHoliday ? RosterConst.Cause.HALF_HOLIDAY : RosterConst.Cause.ABSENCE);
+                }
             }
 
             // 行き先
