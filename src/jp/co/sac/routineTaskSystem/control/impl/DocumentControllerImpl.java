@@ -52,6 +52,12 @@ public class DocumentControllerImpl implements DocumentControllerIF {
         return document;
     }
 
+    /**
+     * 読込失敗時のダミー書類作成
+     * 
+     * @param filePath 失敗したファイルパス
+     * @return ダミー書類
+     */
     private Document failedLoad(String filePath) {
         Document document = new DummyDocument();
         document.setTitle(DataUtil.convertToTitleFromFilePath(filePath));

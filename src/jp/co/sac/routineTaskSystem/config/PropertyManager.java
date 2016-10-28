@@ -18,20 +18,18 @@ public class PropertyManager {
 
     private static Logger log = Logger.getLogger("root");
 
-    private boolean thisOK = false;
     private Properties resource;
 
-    public PropertyManager(String fileName) {
-        load(fileName);
+    public PropertyManager(String fileName, String charSetName) {
+        load(fileName, charSetName);
     }
 
-    private void load(String filePath) {
+    private void load(String filePath, String charSetName) {
         try {
             resource = new Properties();
             try (InputStream is = new FileInputStream(new File(filePath));
-                    InputStreamReader isr = new InputStreamReader(is, "UTF-8")) {
+                    InputStreamReader isr = new InputStreamReader(is, charSetName)) {
                 resource.load(isr);
-                thisOK = true;
             }
         } catch (Exception ex) {
             log.warn(" * [" + filePath + "]を読み込めませんでした。");

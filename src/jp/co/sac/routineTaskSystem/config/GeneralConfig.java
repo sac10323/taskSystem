@@ -11,8 +11,15 @@ import jp.co.sac.routineTaskSystem.constant.Const;
 public class GeneralConfig {
 
     private static final String CONFIG_PATH = Const.getRootPath() + File.separator + "settings.properties";
-    private static PropertyManager manager = new PropertyManager(CONFIG_PATH);
-    private static GeneralConfig instance = new GeneralConfig();
+    private PropertyManager manager;
+
+    private enum GeneralConfigInstance {
+        main;
+        GeneralConfig instance;
+        private GeneralConfigInstance() {
+            instance = new GeneralConfig();
+        }
+    }
 
     public enum Kind {
         numberOfShowFinds("numberOfShowFinds", "0"),
@@ -37,10 +44,11 @@ public class GeneralConfig {
     }
 
     public static GeneralConfig getInstance() {
-        return instance;
+        return GeneralConfigInstance.main.instance;
     }
 
     private GeneralConfig() {
+         manager = new PropertyManager(CONFIG_PATH, "UTF-8");
     }
 
     public String getString(Kind kind) {
