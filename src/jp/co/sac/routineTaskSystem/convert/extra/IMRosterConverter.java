@@ -103,7 +103,7 @@ public class IMRosterConverter extends DocumentConverter<RosterDocument, IMCSVEn
             if (from != null && to != null) {
                 if (from[3] > 9 || (from[3] == 9 && from[4] > 0)) {
                     document.put(RosterConst.Category.Cause, index, hasWorkHoliday ? RosterConst.Cause.HALF_HOLIDAY : RosterConst.Cause.DELAY);
-                } else if (to[3] < 18) {
+                } else if (to[3] < 18 || (to[3] == 18 && to[4] > 0)) {
                     document.put(RosterConst.Category.Cause, index, hasWorkHoliday ? RosterConst.Cause.HALF_HOLIDAY : RosterConst.Cause.LEAVE_EARLY);
                 }
             }
