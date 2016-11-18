@@ -8,18 +8,11 @@ import jp.co.sac.routineTaskSystem.constant.Const;
  *
  * @author shogo_saito
  */
-public class GeneralConfig {
+public enum GeneralConfig {
+    Instance;
 
-    private static final String CONFIG_PATH = Const.getRootPath() + File.separator + "settings.properties";
+    private final String CONFIG_PATH = Const.getRootPath() + File.separator + "settings.properties";
     private PropertyManager manager;
-
-    private enum GeneralConfigInstance {
-        main;
-        GeneralConfig instance;
-        private GeneralConfigInstance() {
-            instance = new GeneralConfig();
-        }
-    }
 
     public enum Kind {
         numberOfShowFinds("numberOfShowFinds", "0"),
@@ -44,10 +37,10 @@ public class GeneralConfig {
     }
 
     public static GeneralConfig getInstance() {
-        return GeneralConfigInstance.main.instance;
+        return Instance;
     }
 
-    private GeneralConfig() {
+    GeneralConfig() {
          manager = new PropertyManager(CONFIG_PATH, "UTF-8");
     }
 
