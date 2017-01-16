@@ -59,7 +59,7 @@ public class DocumentCheckFlow {
                 String readDirPath = config.getString("checkFolder");
                 if (!DataUtil.isNullOrEmpty(readDirPath)) {
                     readDirPath = Const.getRootPath() + File.separator + readDirPath;
-                    List<String> targets = getCheckTargetFilePaths(readDirPath, true);
+                    List<String> targets = FileUtil.getCheckTargetFilePaths(readDirPath, true);
                     for (String filePath : targets) {
                         docs.add(docCtrl.load(filePath));
                     }
@@ -87,7 +87,7 @@ public class DocumentCheckFlow {
 
             if (config.getBoolean("writeXl")) {
                 // フォルダ準備
-                String dirPath = getCreateDirPath(config.getString("outputFolderXl", "out"));
+                String dirPath = Const.getRootPath() + File.separator + config.getString("outputFolderXl", "out");
                 FileUtil.prepareDirectory(dirPath);
                 // Excel出力
                 for (Document doc : docs) {
@@ -104,7 +104,7 @@ public class DocumentCheckFlow {
 
             if (config.getBoolean(GeneralConfig.Kind.outputCsv)) {
                 // フォルダ準備
-                String dirPath = getCreateDirPath(config.getString("outputFolderCsv", "out"));
+                String dirPath = Const.getRootPath() + File.separator + config.getString("outputFolderCsv", "out");
                 FileUtil.prepareDirectory(dirPath);
                 // CSV出力
                 for (Document doc : docs) {
@@ -139,34 +139,5 @@ public class DocumentCheckFlow {
             Output.getInstance().println(" *** 終了 *** ");
         }
         return exitStatus;
-    }
-
-    private List<String> getCheckTargetFilePaths(String dirPath, boolean recursive) {
-        List<String> result = new ArrayList<>();
-        File root = new File(dirPath);
-        if (root.exists() && root.isDirectory()) {
-            for (File file : getFiles(root)) {
-                result.add(file.getPath());
-            }
-        }
-        return result;
-    }
-
-    private List<File> getFiles(File rootDir) {
-        List<File> result = new ArrayList<>();
-        for( File file : rootDir.listFiles()) {
-            if (file.exists()) {
-                if (file.isDirectory()) {
-                    result.addAll(getFiles(file));
-                } else if (file.isFile()) {
-                    result.add(file);
-                }
-            }
-        }
-        return result;
-    }
-
-    private String getCreateDirPath (String dirName) {
-        return Const.getRootPath() + File.separator + dirName;
     }
 }

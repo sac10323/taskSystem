@@ -101,10 +101,21 @@ public class IMRosterConverter extends DocumentConverter<RosterDocument, IMCSVEn
 
             // 事由
             if (from != null && to != null) {
+                // 出社が遅い（遅刻・午前休）
                 if (from[3] > 9 || (from[3] == 9 && from[4] > 0)) {
-                    document.put(RosterConst.Category.Cause, index, hasWorkHoliday ? RosterConst.Cause.HALF_HOLIDAY : RosterConst.Cause.DELAY);
-                } else if (to[3] < 18 || (to[3] == 18 && to[4] > 0)) {
-                    document.put(RosterConst.Category.Cause, index, hasWorkHoliday ? RosterConst.Cause.HALF_HOLIDAY : RosterConst.Cause.LEAVE_EARLY);
+                    if (from[3] >= 12) {
+                        document.put(RosterConst.Category.Cause, index, hasWorkHoliday ? RosterConst.Cause.HALF_HOLIDAY : RosterConst.Cause.DELAY);
+                    } else {
+                        document.put(RosterConst.Category.Cause, index, RosterConst.Cause.DELAY);
+                    }
+                }
+                // 勤務終了が早い（早退・午後休）
+                if (to[3] < 18) {
+                    if (to[3] <= 16) {
+                        document.put(RosterConst.Category.Cause, index, hasWorkHoliday ? RosterConst.Cause.HALF_HOLIDAY : RosterConst.Cause.LEAVE_EARLY);
+                    } else {
+                        document.put(RosterConst.Category.Cause, index, RosterConst.Cause.LEAVE_EARLY);
+                    }
                 }
             }
 
@@ -113,6 +124,7 @@ public class IMRosterConverter extends DocumentConverter<RosterDocument, IMCSVEn
                 document.put(RosterConst.Category.Destination, index, "浜松町(インフォマート)");
             }
         }
+        // TODO:営業日判定して有休・欠勤自動設定（バリデートと同時利用で入力を促す）
         return document;
     }
 
