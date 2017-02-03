@@ -4,8 +4,8 @@ import jp.co.sac.routineTaskSystem.common.DataUtil;
 import jp.co.sac.routineTaskSystem.constant.RosterConst;
 import jp.co.sac.routineTaskSystem.convert.DocumentConverter;
 import jp.co.sac.routineTaskSystem.entity.csv.CSVEntity;
-import jp.co.sac.routineTaskSystem.entity.csv.RosterCSVEntity;
-import jp.co.sac.routineTaskSystem.entity.csv.RosterCSVRecord;
+import jp.co.sac.routineTaskSystem.entity.csv.data.RosterCSVEntity;
+import jp.co.sac.routineTaskSystem.entity.csv.record.RosterCSVRecord;
 import jp.co.sac.routineTaskSystem.entity.document.Document;
 import jp.co.sac.routineTaskSystem.entity.document.RosterDocument;
 

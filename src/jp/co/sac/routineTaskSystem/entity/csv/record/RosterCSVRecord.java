@@ -1,4 +1,4 @@
-package jp.co.sac.routineTaskSystem.entity.csv;
+package jp.co.sac.routineTaskSystem.entity.csv.record;
 
 import com.orangesignal.csv.annotation.CsvColumn;
 import com.orangesignal.csv.annotation.CsvEntity;
