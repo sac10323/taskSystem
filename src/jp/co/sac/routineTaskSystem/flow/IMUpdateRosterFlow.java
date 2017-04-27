@@ -1,6 +1,7 @@
 package jp.co.sac.routineTaskSystem.flow;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,9 +13,12 @@ import jp.co.sac.routineTaskSystem.config.GeneralConfig;
 import jp.co.sac.routineTaskSystem.constant.Const;
 import jp.co.sac.routineTaskSystem.constant.RosterConst;
 import jp.co.sac.routineTaskSystem.control.DocumentControllerIF;
+import jp.co.sac.routineTaskSystem.entity.csv.extra.IMScheduleEntity;
 import jp.co.sac.routineTaskSystem.entity.document.Document;
+import jp.co.sac.routineTaskSystem.entity.document.RosterDocument;
 import jp.co.sac.routineTaskSystem.factory.DocumentControllerFactory;
 import jp.co.sac.routineTaskSystem.log.Output;
+import jp.co.sac.routineTaskSystem.manage.csv.extra.IMScheduleManager;
 import org.apache.log4j.Logger;
 
 /**
@@ -44,7 +48,6 @@ public class IMUpdateRosterFlow {
             String readDirPath = config.getString("imCsvFolder");
             if (!DataUtil.isNullOrEmpty(readDirPath)) {
                 List<String> targets = FileUtil.getCheckTargetFilePaths(readDirPath, false);
-                Map<String, String> pathMap = new ConcurrentHashMap<>();
                 for (String filePath : targets) {
                     if (!"csv".equals(DataUtil.getExtensionFromFilePath(filePath))) {
                         continue;
@@ -85,6 +88,9 @@ public class IMUpdateRosterFlow {
                     saveDocs.add(newDoc);
                 }
             }
+
+            // スケジュール取得
+            applicateSchedule(docs);
 
             // Excel出力
             Output.getInstance().println("Excel出力開始");
@@ -145,5 +151,84 @@ public class IMUpdateRosterFlow {
         }
         log.debug("突合せ後");
         Output.getInstance().printForDebug(new ArrayList<>(Arrays.asList(oldDoc, newDoc)));
+    }
+
+    private void applicateSchedule(List<Document> docs) {
+
+        Output.getInstance().println("スケジュール取得開始");
+        List<IMScheduleEntity> schList = new ArrayList<>();
+        String schDirPath = config.getString("imScheduleFolder");
+        if (!DataUtil.isNullOrEmpty(schDirPath)) {
+            IMScheduleManager imSchMgr = new IMScheduleManager();
+            List<String> targets = FileUtil.getCheckTargetFilePaths(schDirPath, false);
+            for (String filePath : targets) {
+                if (!"csv".equals(DataUtil.getExtensionFromFilePath(filePath))) {
+                    continue;
+                }
+                String title = DataUtil.convertToTitleFromFilePath(filePath);
+                if (title != null && title.matches("sch\\d{5}")) {
+                    IMScheduleEntity sch = imSchMgr.load(filePath);
+                    if (sch != null) {
+                        schList.add(sch);
+                    }
+                }
+            }
+        }
+
+        if (schList.isEmpty()) {
+            return;
+        }
+
+        Output.getInstance().println("スケジュール適用開始");
+        for (Document doc : docs) {
+
+            IMScheduleEntity schs = null;
+            String staffId = (String) doc.get(RosterConst.Category.StaffId, 0);
+
+            for (IMScheduleEntity sch : schList) {
+                if (sch.getTitle().equals("sch" + staffId)) {
+                    schs = sch;
+                }
+            }
+
+            if (schs == null) {
+                continue;
+            }
+
+            String targetYearMonth = doc.getYearMonthString();
+            if (DataUtil.isNullOrEmpty(targetYearMonth)) {
+                log.error("スケジュール適用に失敗しました、勤務表に年月が設定されていません。 title:" + doc.getTitle());
+                return;
+            }
+            SimpleDateFormat sdf = new SimpleDateFormat("YYYYMM");
+            for (IMScheduleEntity sch : schs.records()) {
+                if (sch.getDate() == null) {
+                    continue;
+                }
+                String currentYM = sdf.format(sch.getDate());
+                if (!targetYearMonth.equals(currentYM)) {
+                    continue;
+                }
+                Integer day = DataUtil.convertToIntFromDate(sch.getDate())[2];
+                if (DataUtil.isNullOrZero(day)) {
+                    continue;
+                }
+                day--;
+                if (!DataUtil.isNullOrEmpty(sch.getCause())) {
+                    String cause = (String) doc.get(RosterConst.Category.Cause, day);
+                    if (cause == null || !cause.contains(sch.getCause())) {
+                        cause = (cause == null ? "" : cause) + sch.getCause();
+                    }
+                    doc.put(RosterConst.Category.Cause, day, cause);
+                }
+                if (!DataUtil.isNullOrEmpty(sch.getDestination())) {
+                    String destination = (String) doc.get(RosterConst.Category.Destination, day);
+                    if (destination == null || !destination.contains(sch.getDestination())) {
+                        destination = (destination == null ? "" : destination) + sch.getDestination();
+                    }
+                    doc.put(RosterConst.Category.Destination, day, destination);
+                }
+            }
+        }
     }
 }
