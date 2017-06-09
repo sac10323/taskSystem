@@ -155,10 +155,10 @@ public class IMUpdateRosterFlow {
 
     private void applicateSchedule(List<Document> docs) {
 
-        Output.getInstance().println("スケジュール取得開始");
         List<IMScheduleEntity> schList = new ArrayList<>();
         String schDirPath = config.getString("imScheduleFolder");
         if (!DataUtil.isNullOrEmpty(schDirPath)) {
+            Output.getInstance().println("スケジュール取得開始");
             IMScheduleManager imSchMgr = new IMScheduleManager();
             List<String> targets = FileUtil.getCheckTargetFilePaths(schDirPath, false);
             for (String filePath : targets) {
@@ -186,12 +186,15 @@ public class IMUpdateRosterFlow {
             String staffId = (String) doc.get(RosterConst.Category.StaffId, 0);
 
             for (IMScheduleEntity sch : schList) {
+                log.debug("staffId<" + staffId + ">, schedule<" + sch.getTitle() + ">");
                 if (sch.getTitle().equals("sch" + staffId)) {
+                    log.debug("適用対象スケジュールあり");
                     schs = sch;
                 }
             }
 
             if (schs == null) {
+                    log.debug("適用対象スケジュールなし");
                 continue;
             }
 
@@ -201,7 +204,9 @@ public class IMUpdateRosterFlow {
                 return;
             }
             SimpleDateFormat sdf = new SimpleDateFormat("YYYYMM");
+            log.debug("sch.size():" + schs.records().size());
             for (IMScheduleEntity sch : schs.records()) {
+                log.debug("getDate<" + sch.getDate() + ">, getCause<" + sch.getCause() + ">, getDestination<" + sch.getDestination() + "<");
                 if (sch.getDate() == null) {
                     continue;
                 }

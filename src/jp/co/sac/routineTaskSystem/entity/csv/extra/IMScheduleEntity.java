@@ -12,7 +12,7 @@ import jp.co.sac.routineTaskSystem.entity.csv.CSVEntity;
  *
  * @author shogo_saito
  */
-@CsvEntity
+@CsvEntity(header = false)
 public class IMScheduleEntity extends CSVEntity<IMScheduleEntity> {
     @CsvColumn(position = 0, format = "yyyy/MM/dd")
     private Date date;
@@ -29,9 +29,8 @@ public class IMScheduleEntity extends CSVEntity<IMScheduleEntity> {
     }
 
     public IMScheduleEntity(String title, List<IMScheduleEntity> records) {
-        this();
+        super(records);
         setTitle(title);
-        records().addAll(records);
     }
 
     public Date getDate() {
