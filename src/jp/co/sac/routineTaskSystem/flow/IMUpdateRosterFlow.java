@@ -5,8 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import jp.co.sac.routineTaskSystem.common.DataUtil;
 import jp.co.sac.routineTaskSystem.common.FileUtil;
 import jp.co.sac.routineTaskSystem.config.GeneralConfig;
@@ -15,7 +13,6 @@ import jp.co.sac.routineTaskSystem.constant.RosterConst;
 import jp.co.sac.routineTaskSystem.control.DocumentControllerIF;
 import jp.co.sac.routineTaskSystem.entity.csv.extra.IMScheduleEntity;
 import jp.co.sac.routineTaskSystem.entity.document.Document;
-import jp.co.sac.routineTaskSystem.entity.document.RosterDocument;
 import jp.co.sac.routineTaskSystem.factory.DocumentControllerFactory;
 import jp.co.sac.routineTaskSystem.log.Output;
 import jp.co.sac.routineTaskSystem.manage.csv.extra.IMScheduleManager;
@@ -57,6 +54,9 @@ public class IMUpdateRosterFlow {
                         docs.add(docCtrl.load(filePath));
                     }
                 }
+            } else {
+                Output.getInstance().println("読込先が指定されていません。");
+                throw new Exception("プロパティ[imCsvFolder]の指定がありません。");
             }
 
             Output.getInstance().println("既存の勤務表読込開始");
@@ -115,10 +115,11 @@ public class IMUpdateRosterFlow {
 
             Output.getInstance().println("IMCSV → 勤務表自動作成終了");
         } catch (Exception ex) {
-            Output.getInstance().println("エラー発生：詳細はログフィルを参照");
+            Output.getInstance().println("エラー発生：詳細はログファイルを参照してください。");
             log.warn("エラー発生", ex);
             exitStatus = Const.EXIT_STATUS_EXCEPTION;
         }
+        Thread.sleep(3000L);
         return exitStatus;
     }
 
@@ -194,7 +195,7 @@ public class IMUpdateRosterFlow {
             }
 
             if (schs == null) {
-                    log.debug("適用対象スケジュールなし");
+                log.debug("適用対象スケジュールなし");
                 continue;
             }
 
@@ -218,20 +219,20 @@ public class IMUpdateRosterFlow {
                 if (DataUtil.isNullOrZero(day)) {
                     continue;
                 }
-                day--;
+                int idx = day - 1;
                 if (!DataUtil.isNullOrEmpty(sch.getCause())) {
-                    String cause = (String) doc.get(RosterConst.Category.Cause, day);
+                    String cause = (String) doc.get(RosterConst.Category.Cause, idx);
                     if (cause == null || !cause.contains(sch.getCause())) {
                         cause = (cause == null ? "" : cause) + sch.getCause();
                     }
-                    doc.put(RosterConst.Category.Cause, day, cause);
+                    doc.put(RosterConst.Category.Cause, idx, cause);
                 }
                 if (!DataUtil.isNullOrEmpty(sch.getDestination())) {
-                    String destination = (String) doc.get(RosterConst.Category.Destination, day);
+                    String destination = (String) doc.get(RosterConst.Category.Destination, idx);
                     if (destination == null || !destination.contains(sch.getDestination())) {
-                        destination = (destination == null ? "" : destination) + sch.getDestination();
+                        destination = (destination == null ? "" : destination + "・") + sch.getDestination();
                     }
-                    doc.put(RosterConst.Category.Destination, day, destination);
+                    doc.put(RosterConst.Category.Destination, idx, destination);
                 }
             }
         }
