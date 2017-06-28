@@ -220,10 +220,18 @@ public class IMUpdateRosterFlow {
                     continue;
                 }
                 int idx = day - 1;
-                if (!DataUtil.isNullOrEmpty(sch.getCause())) {
-                    String cause = (String) doc.get(RosterConst.Category.Cause, idx);
-                    if (cause == null || !cause.contains(sch.getCause())) {
-                        cause = (cause == null ? "" : cause) + sch.getCause();
+                if (!DataUtil.isNullOrEmpty(sch.getTimeFrom())) {
+                    String timeFrom = sch.getTimeFrom();
+                    doc.put(RosterConst.Category.FROM, idx, timeFrom);
+                }
+                if (!DataUtil.isNullOrEmpty(sch.getTimeTo())) {
+                    String timeTo = sch.getTimeTo();
+                    doc.put(RosterConst.Category.TO, idx, timeTo);
+                }
+                {
+                    String cause = sch.getCause();
+                    if (DataUtil.isNullOrEmpty(cause)) {
+                        cause = null;
                     }
                     doc.put(RosterConst.Category.Cause, idx, cause);
                 }
@@ -235,6 +243,8 @@ public class IMUpdateRosterFlow {
                     doc.put(RosterConst.Category.Destination, idx, destination);
                 }
             }
+            log.debug("スケジュール適用後");
+            Output.getInstance().printForDebug(new ArrayList<>(Arrays.asList(doc)));
         }
     }
 }

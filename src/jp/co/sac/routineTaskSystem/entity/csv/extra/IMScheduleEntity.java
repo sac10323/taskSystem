@@ -17,8 +17,12 @@ public class IMScheduleEntity extends CSVEntity<IMScheduleEntity> {
     @CsvColumn(position = 0, format = "yyyy/MM/dd")
     private Date date;
     @CsvColumn(position = 1)
-    private String cause;
+    private String timeFrom;
     @CsvColumn(position = 2)
+    private String timeTo;
+    @CsvColumn(position = 3)
+    private String cause;
+    @CsvColumn(position = 4)
     private String destination;
 
     public IMScheduleEntity() {
@@ -39,6 +43,22 @@ public class IMScheduleEntity extends CSVEntity<IMScheduleEntity> {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getTimeFrom() {
+        return timeFrom;
+    }
+
+    public void setTimeFrom(String timeFrom) {
+        this.timeFrom = timeFrom;
+    }
+
+    public String getTimeTo() {
+        return timeTo;
+    }
+
+    public void setTimeTo(String timeTo) {
+        this.timeTo = timeTo;
     }
 
     public String getCause() {
